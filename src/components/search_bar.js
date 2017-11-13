@@ -17,6 +17,7 @@ class Searchbar extends React.Component { //define new class searchbar and give 
         this.setState({
             inputValue: event.target.value
         });
+        this.props.onSearch(this.state.inputValue);
         //make api call using search query
     }
 
@@ -24,7 +25,7 @@ class Searchbar extends React.Component { //define new class searchbar and give 
         //we can change state in render method also
         //controlled input :: whose value is set by using state object so its value will change when state changes
         return (
-            <div>
+            <div className="search-bar">
                 <input type='text'
                     value={this.state.inputValue}
                     placeholder='Search Video'
