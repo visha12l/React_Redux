@@ -27,7 +27,7 @@ class Searchbar extends React.Component { //define new class searchbar and give 
             <div>
                 <input type='text'
                     value={this.state.inputValue}
-                    placeholder='enter video name'
+                    placeholder='Search Video'
                     onChange={this.handleInputChange}
                 />
             </div>
