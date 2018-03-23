@@ -6,9 +6,6 @@ const VideoDetail = (props) => {
         let videoID = videoDetail.id.videoID;
         const url = `https://www.youtube.com/embed/${videoID}`;
     }
-    else {
-        console.log('ssj')
-    }
     return (
         <div clasName="video-detail col-md-8">
             <div className="embed-responsive embed-responsive-16by9">

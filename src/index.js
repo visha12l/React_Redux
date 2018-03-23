@@ -5,32 +5,38 @@ import Searchbar from './components/search_bar';
 import YTSearch from 'youtube-api-search';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
+import _ from 'lodash';
 
 export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
             videos: [],
+            selectedVideos: null,
         };
+        this.videoSearch('board'); //default search with board keyword
     }
 
-    componentDidMount() {
+    videoSearch(term) {
         YTSearch({
-            key: API_KEY, term: 'board'}, //data sent
+            key: API_KEY, term: term
+        }, //data sent
             (data) => {  //callback function
                 this.setState({
                     videos: data,
+                    selectedVideos: data[0],
                 });
-        });
+            });
     }
 
     render() {
+        const videoSearch = _.debounce((term) => {this.videoSearch(term)},300);
         return (
-              <div>
-                  <Searchbar />
-                  <VideoList videos={this.state.videos} />
-                  <VideoDetail videos={this.state.videos[0]} />
-              </div>
+            <div>
+                <Searchbar onSearch={videoSearch}/>
+                <VideoList videos={this.state.videos} />
+                <VideoDetail videos={this.state.selectedVideos} />
+            </div>
         );
     }
 }

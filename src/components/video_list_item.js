@@ -4,7 +4,7 @@ const VideoListItem = (props) => {
     let video = props.video;
     const imageUrl = video.snippet.thumbnails.default.url;
     return (
-        <li clasName="list-group-item">
+        <li className="list-group-item">
             <div className="media-left pull-left">
                 <img className="media-object" src={imageUrl}/>
             </div>
